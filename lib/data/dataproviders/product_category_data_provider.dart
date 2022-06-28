@@ -37,11 +37,27 @@ class ProductCategoryDataProvider {
         headers: Headers,
         body: jsonEncode(<String, String>{'name': categoryName}));
     if (response.statusCode == successCode) {
-      const SnackBar(
-        content: Text('Category not added'),
-      );
+      // const SnackBar(
+      //   content: Text('Category not added'),
+      // );
       // print('success');
     } else {
+      throw response.statusCode;
+    }
+  }
+
+  Future deleteProductCategory(int categoryID) async {
+    var url = Uri.parse('${_baseUrl}delete/product/category');
+    var response =
+        await http.post(url, headers: Headers, body: {'id': categoryID});
+    if (response.statusCode == successCode) {
+      // const SnackBar(
+      //   content: Text('Category not added'),
+      // );
+      print('success');
+    } else {
+      print('crazt O_o');
+
       throw response.statusCode;
     }
   }

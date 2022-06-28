@@ -9,7 +9,7 @@ class CircularLoader extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(deviceHeight * 0.4),
       child: const CircularProgressIndicator(
-        color: Colors.grey,
+        color: Colors.blue,
       ),
     );
   }

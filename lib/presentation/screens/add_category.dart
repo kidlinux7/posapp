@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos/data/repositories/product_category_repository.dart';
 import 'package:pos/logic/bloc/product_category_bloc.dart';
+import 'package:pos/presentation/screens/product_categories.dart';
 import 'package:pos/presentation/widgets/text.dart';
 
 class AddCategory extends StatefulWidget {
@@ -37,22 +38,20 @@ class _AddCategoryState extends State<AddCategory> {
           elevation: 0.0,
           title: const HeadingText(word: 'Add Product Category')),
       body: BlocListener<ProductCategoryBloc, ProductCategoryState>(
+        bloc: productCategoryBloc,
         listener: (context, state) {
           if (state is AddProductCategoryAdded) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Product Category Added')));
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Product Category Added')));
+            Navigator.pop(context);
           }
           if (state is AddProductCategoryLoading) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(const SnackBar(content: Text('Loading')));
           }
-          if (state is AddProductCategoryAdded) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Product Category Added')));
-          }
           if (state is AddProductCategoryError) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Failed to Add')));
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('Failed to Add Product Category')));
           }
         },
         child: Column(
@@ -102,7 +101,7 @@ class _AddCategoryState extends State<AddCategory> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Phone Number is required';
+                    return 'Category name is required';
                   }
                   return null;
                 },

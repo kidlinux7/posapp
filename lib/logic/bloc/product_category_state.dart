@@ -29,3 +29,10 @@ class AddProductCategoryLoading extends ProductCategoryState {}
 class AddProductCategoryError extends ProductCategoryState {}
 
 
+class DeleteProductCategoryDefault extends ProductCategoryState {}
+
+class DeleteProductCategoryDeleted extends ProductCategoryState {}
+
+class DeleteProductCategoryLoading extends ProductCategoryState {}
+
+class DeleteProductCategoryError extends ProductCategoryState {}

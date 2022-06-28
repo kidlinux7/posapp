@@ -17,15 +17,30 @@ class ProductCategoryBloc
 
     on<AddProductCategoryPressed>(
       (event, emit) async {
-        final state = this.state;
-        
+        // final state = this.state;
+
         try {
           final addproductcategory = await productCategoryRepository
               .addProductCategory(event.categoryName);
           emit(AddProductCategoryLoading());
           emit(AddProductCategoryAdded());
-        } on NetworkError {
+        } catch (identifier) {
           emit(AddProductCategoryError());
+        }
+      },
+    );
+
+    on<DeleteProductCategoryPressed>(
+      (event, emit) async {
+        // final state = this.state;
+        try {
+          print('Do something');
+          final deleteproductcategory = await productCategoryRepository
+              .deleteProductCategory(event.categoryID);
+          // emit(DeleteProductCategoryLoading());
+          emit(DeleteProductCategoryDeleted());
+        } catch (identifier) {
+          emit(DeleteProductCategoryError());
         }
       },
     );
@@ -36,7 +51,7 @@ class ProductCategoryBloc
         final List<ProductCategoryModel> productcategory =
             await productCategoryRepository.fetchProductCategory();
         emit(ProductCategoryLoaded(productcategory));
-      } on NetworkError {
+      } catch (identifier) {
         emit(ProductCategoryError());
       }
     });

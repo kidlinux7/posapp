@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pos/presentation/screens/product_categories.dart';
 import 'package:pos/presentation/widgets/text.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -24,6 +25,12 @@ class CategoryCard extends StatelessWidget {
               padding: EdgeInsets.only(left: 20.0),
               child: NormalText(word: categoryName),
             ),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.grey,
+                ))
           ],
         ),
       ),

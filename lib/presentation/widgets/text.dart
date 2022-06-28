@@ -20,6 +20,24 @@ class NormalText extends StatelessWidget {
   }
 }
 
+class MediumText extends StatelessWidget {
+  const MediumText({Key? key, required this.word}) : super(key: key);
+  final String word;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      word,
+      style: GoogleFonts.lato(
+        color: const Color.fromARGB(255, 92, 92, 92),
+        textStyle: Theme.of(context).textTheme.headline4,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        fontStyle: FontStyle.normal,
+      ),
+    );
+  }
+}
+
 class HeadingText extends StatelessWidget {
   const HeadingText({Key? key, required this.word}) : super(key: key);
   final String word;
@@ -31,7 +49,7 @@ class HeadingText extends StatelessWidget {
         color: const Color.fromARGB(255, 131, 131, 131),
         textStyle: Theme.of(context).textTheme.headline4,
         fontSize: 25,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w900,
         fontStyle: FontStyle.normal,
       ),
     );

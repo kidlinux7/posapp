@@ -15,6 +15,12 @@ class AddProductCategoryPressed extends ProductCategoryEvent {
   // {} used to define keyword arguments
   final String categoryName;
   const AddProductCategoryPressed({required this.categoryName});
-  // @override
-//  get props => categoryName;
 }
+
+class DeleteProductCategoryPressed extends ProductCategoryEvent {
+  // {} used to define keyword arguments
+  final int categoryID;
+  const DeleteProductCategoryPressed({required this.categoryID});
+
+}
+
