@@ -21,6 +21,12 @@ class DeleteProductCategoryPressed extends ProductCategoryEvent {
   // {} used to define keyword arguments
   final int categoryID;
   const DeleteProductCategoryPressed({required this.categoryID});
-
 }
 
+class EditProductCategoryPressed extends ProductCategoryEvent {
+  // {} used to define keyword arguments
+  final int editcategoryID;
+  final String editcategoryName;
+  const EditProductCategoryPressed(
+      {required this.editcategoryID, required this.editcategoryName});
+}

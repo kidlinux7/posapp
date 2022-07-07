@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pos/presentation/screens/home.dart';
 import 'package:pos/presentation/screens/product_categories.dart';
+import 'package:pos/presentation/screens/inventory.dart';
 import 'package:pos/presentation/screens/products.dart';
 import 'package:pos/presentation/screens/reports.dart';
 import 'package:pos/presentation/screens/sales.dart';
@@ -16,7 +17,7 @@ class Navbar extends StatefulWidget {
 int _selectPage = 0;
 final _pageOptions = [
   const Home(),
-  const Products(),
+  const Inventory(),
   const Sales(),
   const Reports()
 ];
@@ -55,12 +56,22 @@ class _NavbarState extends State<Navbar> {
                 );
               },
             ),
+            ListTile(
+              title: const NormalText(word: 'Products'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Products()),
+                );
+              },
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
+        // showSelectedLabels: true,
         selectedItemColor: const Color.fromARGB(255, 88, 76, 255),
         unselectedItemColor: Colors.grey,
         currentIndex: _selectPage,

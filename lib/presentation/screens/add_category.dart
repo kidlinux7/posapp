@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos/data/repositories/product_category_repository.dart';
-import 'package:pos/logic/bloc/product_category_bloc.dart';
+import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
+import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
 import 'package:pos/presentation/screens/product_categories.dart';
 import 'package:pos/presentation/widgets/text.dart';
 
@@ -43,7 +44,13 @@ class _AddCategoryState extends State<AddCategory> {
           if (state is AddProductCategoryAdded) {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Product Category Added')));
+            // productCategoryBloc.add(FetchProductCategory());
+            // Refetch
             Navigator.pop(context);
+
+            Future.delayed(Duration(milliseconds: 500), (() {
+              productCategoryBloc.add(const FetchProductCategory());
+            }));
           }
           if (state is AddProductCategoryLoading) {
             ScaffoldMessenger.of(context)
@@ -124,6 +131,12 @@ class _AddCategoryState extends State<AddCategory> {
                     } else {
                       productCategoryBloc.add(AddProductCategoryPressed(
                           categoryName: categoryname.text));
+
+                      // Refetch
+                      Future.delayed(Duration(milliseconds: 500), (() {
+                        productCategoryBloc.add(const FetchProductCategory());
+                      }));
+                      // productCategoryBloc.add(FetchProductCategory());
                     }
                   },
                   child: Container(

@@ -2,7 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos/data/repositories/product_category_repository.dart';
-import 'package:pos/logic/bloc/product_category_bloc.dart';
+import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
+import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
 import 'package:pos/presentation/widgets/navbar.dart';
 
 class MyBlocObserver extends BlocObserver {
@@ -70,6 +71,10 @@ class _MyAppState extends State<MyApp> {
           BlocProvider<ProductCategoryBloc>(
               lazy: false,
               create: (BuildContext context) => ProductCategoryBloc(
+                  productCategoryRepository: productCategoryRepository)),
+          BlocProvider<ProductCategoryDeleteBloc>(
+              lazy: false,
+              create: (BuildContext context) => ProductCategoryDeleteBloc(
                   productCategoryRepository: productCategoryRepository)),
         ],
         child: MaterialApp(

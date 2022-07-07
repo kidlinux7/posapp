@@ -16,6 +16,10 @@ class ProductCategoryRepository {
   Future deleteProductCategory(int categoryID) async {
     return await productCategoryDataProvider.deleteProductCategory(categoryID);
   }
+
+    Future editProductCategory(int editcategoryID, String editcategoryName) async {
+    return await productCategoryDataProvider.editProductCategory(editcategoryID,editcategoryName);
+  }
 }
 
 class NetworkError extends Error {}

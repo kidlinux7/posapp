@@ -17,9 +17,10 @@ class ProductCategoryLoaded extends ProductCategoryState {
   @override
   List<Object> get props => [productcategory];
 }
-class ProductCategoryError extends ProductCategoryState{}
 
+class ProductCategoryError extends ProductCategoryState {}
 
+// Add
 class AddProductCategoryDefault extends ProductCategoryState {}
 
 class AddProductCategoryAdded extends ProductCategoryState {}
@@ -28,7 +29,7 @@ class AddProductCategoryLoading extends ProductCategoryState {}
 
 class AddProductCategoryError extends ProductCategoryState {}
 
-
+// Delete
 class DeleteProductCategoryDefault extends ProductCategoryState {}
 
 class DeleteProductCategoryDeleted extends ProductCategoryState {}
@@ -36,3 +37,12 @@ class DeleteProductCategoryDeleted extends ProductCategoryState {}
 class DeleteProductCategoryLoading extends ProductCategoryState {}
 
 class DeleteProductCategoryError extends ProductCategoryState {}
+
+// Edit
+class EditProductCategoryDefault extends ProductCategoryState {}
+
+class EditProductCategoryEdited extends ProductCategoryState {}
+
+class EditProductCategoryLoading extends ProductCategoryState {}
+
+class EditProductCategoryError extends ProductCategoryState {}

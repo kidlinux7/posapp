@@ -6,10 +6,10 @@ import 'package:pos/data/models/product_category_model.dart';
 import 'package:pos/presentation/widgets/snackbar.dart';
 
 class ProductCategoryDataProvider {
-  final _baseUrl = Inventory.inventory;
+  final _baseUrl = InventoryLink.inventorylink;
   final successCode = 200;
   final Headers = {
-    'Content-Type': 'application/json; charset=UTF-8',
+    'Content-Type': 'application/json',
   };
 
   Future<List<ProductCategoryModel>> fetchProductCategory() async {
@@ -48,15 +48,33 @@ class ProductCategoryDataProvider {
 
   Future deleteProductCategory(int categoryID) async {
     var url = Uri.parse('${_baseUrl}delete/product/category');
-    var response =
-        await http.post(url, headers: Headers, body: {'id': categoryID});
+    var response = await http.post(url,
+        headers: Headers, body: jsonEncode({'id': categoryID}));
     if (response.statusCode == successCode) {
       // const SnackBar(
       //   content: Text('Category not added'),
       // );
       print('success');
     } else {
-      print('crazt O_o');
+      print('crazy O_o');
+
+      throw response.statusCode;
+    }
+  }
+
+  Future editProductCategory(
+      int editcategoryID, String editcategoryName) async {
+    var url = Uri.parse('${_baseUrl}edit/product/category');
+    var response = await http.post(url,
+        headers: Headers,
+        body: jsonEncode({'id': editcategoryID, 'name': editcategoryName}));
+    if (response.statusCode == successCode) {
+      // const SnackBar(
+      //   content: Text('Category not added'),
+      // );
+      print('success');
+    } else {
+      print('crazy O_o');
 
       throw response.statusCode;
     }
