@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:pos/data/models/product_category_model.dart';
 import 'package:pos/data/repositories/product_category_repository.dart';
 
@@ -8,8 +7,7 @@ part 'product_category_event.dart';
 part 'product_category_state.dart';
 
 // Add and Fetch
-class ProductCategoryBloc
-    extends Bloc<ProductCategoryEvent, ProductCategoryState> {
+class ProductCategoryBloc extends Bloc<ProductCategoryEvent, ProductCategoryState> {
   final ProductCategoryRepository productCategoryRepository;
 
   ProductCategoryBloc({required this.productCategoryRepository})

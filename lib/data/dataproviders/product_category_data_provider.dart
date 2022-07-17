@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos/data/api/api_url.dart';
 import 'package:pos/data/models/product_category_model.dart';
-import 'package:pos/presentation/widgets/snackbar.dart';
+
 
 class ProductCategoryDataProvider {
   final _baseUrl = InventoryLink.inventorylink;

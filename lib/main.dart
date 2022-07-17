@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos/data/repositories/product_category_repository.dart';
+import 'package:pos/data/repositories/product_repository.dart';
+import 'package:pos/logic/bloc/product/product_bloc.dart';
 import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
 import 'package:pos/logic/bloc/product_category/product_category_bloc.dart';
 import 'package:pos/presentation/widgets/navbar.dart';
@@ -63,6 +65,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final ProductCategoryRepository productCategoryRepository =
       ProductCategoryRepository();
+
+  final ProductRepository productRepository = ProductRepository();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -76,6 +80,11 @@ class _MyAppState extends State<MyApp> {
               lazy: false,
               create: (BuildContext context) => ProductCategoryDeleteBloc(
                   productCategoryRepository: productCategoryRepository)),
+          BlocProvider<ProductBloc>(
+            lazy: false,
+            create: (BuildContext context) =>
+                ProductBloc(productRepository: productRepository),
+          )
         ],
         child: MaterialApp(
           title: '',
